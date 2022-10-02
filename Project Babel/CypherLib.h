@@ -7,10 +7,10 @@ using namespace System;
 
 #pragma region Caesar Code
 
-auto Caesar(str ins, int k)
+auto Caesar(str InString, int k)
 {
 	k %= 26;
-	auto z = ins->ToCharArray();
+	auto z = InString->ToCharArray();
 	for (int i = 0; i < z->Length; i++)
 	{
 		if (z[i] == ' ')
@@ -114,10 +114,10 @@ auto NumCharSwap(char a)
 	}
 }
 
-auto PolybiusDecrypt(str in, str k)
+auto PolybiusDecrypt(str InString, str k)
 {
-	int* t = new int[in->Length];
-	array<wchar_t>^ ts = in->ToCharArray();
+	int* t = new int[InString->Length];
+	array<wchar_t>^ ts = InString->ToCharArray();
 	char key[25] = { 'A', 'B', 'C', 'D', 'E',
 					'F', 'G', 'H', 'I', 'K',
 					'L', 'M', 'N', 'O', 'P',
@@ -125,7 +125,7 @@ auto PolybiusDecrypt(str in, str k)
 					'V', 'W', 'X', 'Y', 'Z' };
 	if (String::IsNullOrEmpty(k) == 0)
 		PolybiusKeyGenerator(k, key);
-	auto tmp = in->Split();
+	auto tmp = InString->Split();
 	//break array tmp into digits and convert them to letters
 	str out;
 	for (int i = 0; i < tmp->Length; i++)
@@ -141,10 +141,10 @@ auto PolybiusDecrypt(str in, str k)
 	return out;
 }
 
-auto PolybiusEncrypt(str in, str k)
+auto PolybiusEncrypt(str InString, str k)
 {
-	int* t = new int[in->Length];
-	array<wchar_t>^ ts = in->ToCharArray();
+	int* t = new int[InString->Length];
+	array<wchar_t>^ ts = InString->ToCharArray();
 	char key[25] = { 'A', 'B', 'C', 'D', 'E',
 					'F', 'G', 'H', 'I', 'K',
 					'L', 'M', 'N', 'O', 'P',
@@ -152,7 +152,7 @@ auto PolybiusEncrypt(str in, str k)
 					'V', 'W', 'X', 'Y', 'Z' };
 	if (String::IsNullOrEmpty(k) == 0)
 		PolybiusKeyGenerator(k, key);
-	for (int i = 0; i < in->Length; i++)
+	for (int i = 0; i < InString->Length; i++)
 	{
 		if (ts[i] == ' ')
 		{
@@ -167,7 +167,7 @@ auto PolybiusEncrypt(str in, str k)
 			}
 	}
 	str out;
-	for (int i = 0; i < in->Length; i++)
+	for (int i = 0; i < InString->Length; i++)
 	{
 		char t1 = CharNumSwap(t[i] / 10), t2 = CharNumSwap(t2 = t[i] % 10);
 		if ((t1 == '!') || (t2 == '!'))
@@ -301,10 +301,10 @@ auto CharDecrypt(str in)
 		return Convert::ToChar('Z');
 }
 
-auto MorseEncrypt(str ins)
+auto MorseEncrypt(str InString)
 {
 	str out;
-	auto lib = ins->ToCharArray();
+	auto lib = InString->ToCharArray();
 	for (int i = 0; i < lib->Length; i++)
 	{
 		if (lib[i] == ' ')
@@ -315,10 +315,10 @@ auto MorseEncrypt(str ins)
 	return out;
 }
 
-auto MorseDecrypt(str ins)
+auto MorseDecrypt(str InString)
 {
 	str out;
-	auto lib = ins->Split();
+	auto lib = InString->Split();
 	for (int i = 0; i < lib->Length; i++)
 	{
 		if (lib[i] == "/")
@@ -333,9 +333,9 @@ auto MorseDecrypt(str ins)
 
 #pragma region Vingenere Cipher
 
-auto VingenereEncrypt(str ins, str ink)
+auto VingenereEncrypt(str InString, str InKey)
 {
-	auto s = ins->ToCharArray(), k = ink->ToCharArray();
+	auto s = InString->ToCharArray(), k = InKey->ToCharArray();
 	str out;
 	for (int i = 0; i < s->Length; i++)
 	{
@@ -349,9 +349,9 @@ auto VingenereEncrypt(str ins, str ink)
 	return out;
 }
 
-auto VingenereDecrypt(str ins, str ink)
+auto VingenereDecrypt(str InString, str InKey)
 {
-	auto s = ins->ToCharArray(), k = ink->ToCharArray();
+	auto s = InString->ToCharArray(), k = InKey->ToCharArray();
 	str out;
 	for (int i = 0; i < s->Length; i++)
 	{
@@ -369,23 +369,23 @@ auto VingenereDecrypt(str ins, str ink)
 
 #pragma region Scytale Code
 
-auto ScytaleEncrypt(str ins, int ink)
+auto ScytaleEncrypt(str InString, int InKey)
 {
-	auto pro = ins->ToCharArray();
+	auto pro = InString->ToCharArray();
 	str out;
-	for (int i = 0; i < ink; i++)
-		for (int j = 0; j < pro->Length / ink; j++)
-			out += pro[i + (ink * j)];
+	for (int i = 0; i < InKey; i++)
+		for (int j = 0; j < pro->Length / InKey; j++)
+			out += pro[i + (InKey * j)];
 	return out;
 }
 
-auto ScytaleDecrypt(str ins, int ink)
+auto ScytaleDecrypt(str InString, int InKey)
 {
-	auto pro = ins->ToCharArray();
+	auto pro = InString->ToCharArray();
 	str out;
-	for (int i = 0; i < ins->Length / ink; i++)
-		for (int j = 0; j < ink; j++)
-			out += pro[i + (j * (ins->Length / ink))];
+	for (int i = 0; i < InString->Length / InKey; i++)
+		for (int j = 0; j < InKey; j++)
+			out += pro[i + (j * (InString->Length / InKey))];
 	return out;
 }
 
@@ -464,11 +464,11 @@ auto BookKeyGenerator(array<str>^ in)
 	return key;
 }
 
-auto BookEncrypt(str ins, str ink)
+auto BookEncrypt(str InString, str InKey)
 {
-	array<index^>^ key = BookKeyGenerator(ink->Split());
+	array<index^>^ key = BookKeyGenerator(InKey->Split());
 	str out;
-	for (int i = 0; i < ins->Length; i++)
+	for (int i = 0; i < InString->Length; i++)
 		for (int j = 0; j < key->Length; j++)
 		{
 			if (System::String::IsNullOrEmpty(key[j]->word))
@@ -476,7 +476,7 @@ auto BookEncrypt(str ins, str ink)
 				out += L"-1 ";
 				break;
 			}
-			if (key[j]->word[0] == ins[i])
+			if (key[j]->word[0] == InString[i])
 			{
 				out += System::Convert::ToString(key[j]->pos) + L" ";
 				break;
@@ -484,10 +484,24 @@ auto BookEncrypt(str ins, str ink)
 		}
 	return out;
 }
-
-auto BookDecrypt(str ins, str ink)
+auto BookDecrypt(str InString, str InKey)
 {
-	return ins;
+	auto key = BookKeyGenerator(InKey->Split());
+	auto check = InString->Trim()->Split();
+	System::String^ out;
+	for (int i = 0; i < check->Length; i++)
+	{
+		int tmp = System::Convert::ToInt32(check[i]), j = 0;
+		if (tmp == -1)
+		{
+			out += L"~";
+			continue;
+		}
+		while (tmp != key[j]->pos)
+			j++;
+		out += System::Convert::ToString(key[j]->word[0]);
+	}
+	return out;
 }
 
 #pragma endregion

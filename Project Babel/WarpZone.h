@@ -158,7 +158,10 @@ auto Decrypt(int InCipher, str InString, str InKey)
 			InString += (wchar_t)' ';
 		return ScytaleDecrypt(InString, Convert::ToInt32(InKey));
 	case 5:
-
+		if (!Checker(InString->ToCharArray(), 'D'))
+			break;
+		out = BookDecrypt(InString, InKey);
+		break;
 	default:
 		break;
 	}
