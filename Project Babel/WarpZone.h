@@ -1,7 +1,7 @@
 #pragma once
 #include "Main.h"
 #include "CypherLib.h"
-#define str String^ 
+#define str String^
 
 using namespace System;
 /*
@@ -48,17 +48,17 @@ bool Checker(array<wchar_t>^ arr, char switch_on)
 	{
 	case 'L':
 		for (int i = 0; i < arr->Length; i++)
-			if (!Char::IsLetter(arr[i]) && !(arr[i]==' '))
+			if (!Char::IsLetter(arr[i]) && !(arr[i] == ' '))
 				return 0;
 		break;
 	case 'D':
 		for (int i = 0; i < arr->Length; i++)
-			if (!(Char::IsDigit(arr[i]) || arr[i] == ' '))
+			if (!(Char::IsDigit(arr[i]) || arr[i] == ' ' || arr[i] == '-'))
 				return 0;
 		break;
 	case 'M':
 		for (int i = 0; i < arr->Length; i++)
-			if (!(arr[i]=='.' || arr[i]=='-' || arr[i]=='/' || arr[i] == ' '))
+			if (!(arr[i] == '.' || arr[i] == '-' || arr[i] == '/' || arr[i] == ' '))
 				return 0;
 		break;
 	default:

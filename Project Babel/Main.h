@@ -2,7 +2,6 @@
 #include "WarpZone.h"
 
 namespace PB {
-
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -130,7 +129,7 @@ namespace PB {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -152,9 +151,9 @@ namespace PB {
 			this->filebutton = (gcnew System::Windows::Forms::Button());
 			this->desc = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
-			// 
+			//
 			// selector
-			// 
+			//
 			this->selector->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->selector->FormattingEnabled = true;
@@ -170,9 +169,9 @@ namespace PB {
 			this->selector->TabStop = false;
 			this->selector->Text = L"(Select)";
 			this->selector->SelectedIndexChanged += gcnew System::EventHandler(this, &Main::selector_SelectedIndexChanged);
-			// 
+			//
 			// encrypt
-			// 
+			//
 			this->encrypt->Enabled = false;
 			this->encrypt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
@@ -184,9 +183,9 @@ namespace PB {
 			this->encrypt->Text = L"Encrypt";
 			this->encrypt->UseVisualStyleBackColor = true;
 			this->encrypt->Click += gcnew System::EventHandler(this, &Main::encrypt_Click);
-			// 
+			//
 			// decrypt
-			// 
+			//
 			this->decrypt->Enabled = false;
 			this->decrypt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
@@ -198,9 +197,9 @@ namespace PB {
 			this->decrypt->Text = L"Decrypt";
 			this->decrypt->UseVisualStyleBackColor = true;
 			this->decrypt->Click += gcnew System::EventHandler(this, &Main::decrypt_Click);
-			// 
+			//
 			// input
-			// 
+			//
 			this->input->Enabled = false;
 			this->input->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
@@ -209,9 +208,9 @@ namespace PB {
 			this->input->Name = L"input";
 			this->input->Size = System::Drawing::Size(340, 30);
 			this->input->TabIndex = 0;
-			// 
+			//
 			// key
-			// 
+			//
 			this->key->Enabled = false;
 			this->key->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
@@ -220,9 +219,9 @@ namespace PB {
 			this->key->Name = L"key";
 			this->key->Size = System::Drawing::Size(340, 30);
 			this->key->TabIndex = 2;
-			// 
+			//
 			// label1
-			// 
+			//
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
@@ -231,9 +230,9 @@ namespace PB {
 			this->label1->Size = System::Drawing::Size(55, 25);
 			this->label1->TabIndex = 5;
 			this->label1->Text = L"Input";
-			// 
+			//
 			// label2
-			// 
+			//
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
@@ -242,9 +241,9 @@ namespace PB {
 			this->label2->Size = System::Drawing::Size(47, 25);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"Key";
-			// 
+			//
 			// output
-			// 
+			//
 			this->output->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->output->Location = System::Drawing::Point(396, 244);
@@ -254,9 +253,9 @@ namespace PB {
 			this->output->Size = System::Drawing::Size(340, 30);
 			this->output->TabIndex = 7;
 			this->output->TabStop = false;
-			// 
+			//
 			// label3
-			// 
+			//
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
@@ -265,18 +264,18 @@ namespace PB {
 			this->label3->Size = System::Drawing::Size(71, 25);
 			this->label3->TabIndex = 8;
 			this->label3->Text = L"Output";
-			// 
+			//
 			// openfile
-			// 
+			//
 			this->openfile->DefaultExt = L"txt";
 			this->openfile->FileName = L"book.txt";
 			this->openfile->Filter = L"Text Files (*.txt)|";
 			this->openfile->InitialDirectory = L"C:\\Users\\nikle\\source\\repos\\Project Babel DropBox";
 			this->openfile->RestoreDirectory = true;
 			this->openfile->Title = L"Select Book";
-			// 
+			//
 			// filebutton
-			// 
+			//
 			this->filebutton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->filebutton->Location = System::Drawing::Point(11, 271);
@@ -289,17 +288,17 @@ namespace PB {
 			this->filebutton->UseVisualStyleBackColor = true;
 			this->filebutton->Visible = false;
 			this->filebutton->Click += gcnew System::EventHandler(this, &Main::filebutton_Click);
-			// 
+			//
 			// desc
-			// 
+			//
 			this->desc->Location = System::Drawing::Point(13, 53);
 			this->desc->Name = L"desc";
 			this->desc->Size = System::Drawing::Size(727, 123);
 			this->desc->TabIndex = 10;
 			this->desc->Text = L"HERE LIES DESCRIPTION";
-			// 
+			//
 			// Main
-			// 
+			//
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(752, 453);
@@ -321,29 +320,28 @@ namespace PB {
 			this->Text = L"Project Babel";
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
 		}
 #pragma endregion
 
-private: System::Void encrypt_Click(System::Object^ sender, System::EventArgs^ e) {
-	auto inc = selector->SelectedIndex;
-	auto ins = input->Text, ink = key->Text;
-	auto out = Encrypt(inc, ins, ink);
-	output->Text = out;
-}
-private: System::Void decrypt_Click(System::Object^ sender, System::EventArgs^ e) {
-	auto inc = selector->SelectedIndex;
-	auto ins = input->Text, ink = key->Text;
-	auto out = Decrypt(inc, ins, ink);
-	output->Text = out;
-}
-private: System::Void selector_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	ChangeScape(selector->SelectedIndex);
-}
-private: System::Void filebutton_Click(System::Object^ sender, System::EventArgs^ e) {
-	openfile->ShowDialog();
-	auto fs = openfile->FileName;
-	key->Text =	System::IO::File::ReadAllText(fs);
-}
-};
+	private: System::Void encrypt_Click(System::Object^ sender, System::EventArgs^ e) {
+		auto inc = selector->SelectedIndex;
+		auto ins = input->Text, ink = key->Text;
+		auto out = Encrypt(inc, ins, ink);
+		output->Text = out;
+	}
+	private: System::Void decrypt_Click(System::Object^ sender, System::EventArgs^ e) {
+		auto inc = selector->SelectedIndex;
+		auto ins = input->Text, ink = key->Text;
+		auto out = Decrypt(inc, ins, ink);
+		output->Text = out;
+	}
+	private: System::Void selector_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		ChangeScape(selector->SelectedIndex);
+	}
+	private: System::Void filebutton_Click(System::Object^ sender, System::EventArgs^ e) {
+		openfile->ShowDialog();
+		auto fs = openfile->FileName;
+		key->Text = System::IO::File::ReadAllText(fs);
+	}
+	};
 }

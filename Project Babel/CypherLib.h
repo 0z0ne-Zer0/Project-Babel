@@ -1,7 +1,7 @@
 #pragma once
 #include <algorithm>
 #include <iostream>
-#define str String^ 
+#define str String^
 
 using namespace System;
 
@@ -341,7 +341,7 @@ auto VingenereEncrypt(str InString, str InKey)
 	{
 		if (s[i] == ' ')
 			continue;
-		auto t = s[i] + (k[i]-65);
+		auto t = s[i] + (k[i] - 65);
 		if (t > 'Z')
 			t -= 26;
 		out += (wchar_t)t;
@@ -357,9 +357,9 @@ auto VingenereDecrypt(str InString, str InKey)
 	{
 		if (s[i] == ' ')
 			continue;
-		auto t = s[i] - (k[i]-65);
+		auto t = s[i] - (k[i] - 65);
 		if (t < 'A')
-			t += + 26;
+			t += +26;
 		out += (wchar_t)t;
 	}
 	return out;
@@ -406,7 +406,7 @@ public:
 	index(int P, str W)
 	{
 		pos = P;
-		word = W;	
+		word = W;
 	}
 protected:
 	~index()
@@ -466,22 +466,44 @@ auto BookKeyGenerator(array<str>^ in)
 
 auto BookEncrypt(str InString, str InKey)
 {
+	auto rand = gcnew System::Random(System::DateTime::Now.Ticks);
 	array<index^>^ key = BookKeyGenerator(InKey->Split());
 	str out;
 	for (int i = 0; i < InString->Length; i++)
+	{
+		auto curChar = InString[i];
+		bool mode = false, notFound = false;
+		int splitBegin = -1, splitEnd = -1;
 		for (int j = 0; j < key->Length; j++)
 		{
 			if (System::String::IsNullOrEmpty(key[j]->word))
 			{
-				out += L"-1 ";
+				if (mode)
+					splitEnd = j;
+				else
+					notFound = true;
 				break;
 			}
-			if (key[j]->word[0] == InString[i])
+			if (key[j]->word[0] == curChar && !mode)
 			{
-				out += System::Convert::ToString(key[j]->pos) + L" ";
+				splitBegin = j;
+				mode = true;
+				continue;
+			}
+			if (key[j]->word[0] != curChar && mode)
+			{
+				splitEnd = j;
 				break;
 			}
 		}
+		if (!notFound)
+		{
+			int next = rand->Next(splitBegin, splitEnd);
+			out += System::Convert::ToSingle(key[next]->pos) + L" ";
+		}
+		else
+			out += L"-1 ";
+	}
 	return out;
 }
 auto BookDecrypt(str InString, str InKey)
