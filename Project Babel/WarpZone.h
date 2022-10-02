@@ -53,7 +53,7 @@ bool Checker(array<wchar_t>^ arr, char switch_on)
 		break;
 	case 'D':
 		for (int i = 0; i < arr->Length; i++)
-			if (!(Char::IsDigit(arr[i]) || arr[i] == ' '))
+			if (!(Char::IsDigit(arr[i]) || arr[i] == ' ' || arr[i]== '-'))
 				return 0;
 		break;
 	case 'M':
