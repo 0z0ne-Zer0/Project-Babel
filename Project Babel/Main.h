@@ -51,6 +51,7 @@ namespace PB {
 				this->decrypt->Enabled = true;
 				this->filebutton->Visible = false;
 				this->key->Visible = true;
+				this->desc->Text = CDesc(ow);
 				break;
 			case 1:
 				this->input->Enabled = true;
@@ -59,6 +60,7 @@ namespace PB {
 				this->decrypt->Enabled = true;
 				this->filebutton->Visible = false;
 				this->key->Visible = true;
+				this->desc->Text = CDesc(ow);
 				break;
 			case 2:
 				this->input->Enabled = true;
@@ -67,6 +69,7 @@ namespace PB {
 				this->decrypt->Enabled = true;
 				this->filebutton->Visible = false;
 				this->key->Visible = true;
+				this->desc->Text = CDesc(ow);
 				break;
 			case 3:
 				this->input->Enabled = true;
@@ -75,6 +78,7 @@ namespace PB {
 				this->decrypt->Enabled = true;
 				this->filebutton->Visible = false;
 				this->key->Visible = true;
+				this->desc->Text = CDesc(ow);
 				break;
 			case 4:
 				this->input->Enabled = true;
@@ -83,6 +87,7 @@ namespace PB {
 				this->decrypt->Enabled = true;
 				this->filebutton->Visible = false;
 				this->key->Visible = true;
+				this->desc->Text = CDesc(ow);
 				break;
 			case 5:
 				this->input->Enabled = true;
@@ -91,8 +96,21 @@ namespace PB {
 				this->decrypt->Enabled = true;
 				this->filebutton->Visible = true;
 				this->key->Visible = false;
+				this->desc->Text = CDesc(ow);
 				break;
 			}
+		}
+
+	private:
+		System::String^ CDesc(int ow)
+		{
+			auto PATH = IO::Directory::GetCurrentDirectory() + "\\Descriptions.txt";
+			System::String^ out = "If you are seeing this it means something went wrong...";
+			auto lines = IO::File::ReadAllLines(PATH);
+			int n = (ow * 2) + 1;
+			if (!System::String::IsNullOrEmpty(lines[n]))
+				out = lines[n];
+			return out;
 		}
 
 	private: System::Windows::Forms::ComboBox^ selector;
@@ -107,10 +125,6 @@ namespace PB {
 	private: System::Windows::Forms::OpenFileDialog^ openfile;
 	private: System::Windows::Forms::Button^ filebutton;
 	private: System::Windows::Forms::Label^ desc;
-
-
-
-
 
 	private:
 		/// <summary>
@@ -278,10 +292,9 @@ namespace PB {
 			// 
 			// desc
 			// 
-			this->desc->AutoSize = true;
-			this->desc->Location = System::Drawing::Point(9, 53);
+			this->desc->Location = System::Drawing::Point(13, 53);
 			this->desc->Name = L"desc";
-			this->desc->Size = System::Drawing::Size(170, 16);
+			this->desc->Size = System::Drawing::Size(727, 101);
 			this->desc->TabIndex = 10;
 			this->desc->Text = L"HERE LIES DESCRIPTION";
 			// 

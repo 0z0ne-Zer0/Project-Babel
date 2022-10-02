@@ -1,0 +1,12 @@
+[Caesar Cipher]
+Caesar cipher, also known as Caesar's cipher, the shift cipher, Caesar's code or Caesar shift, is one of the simplest and most widely known encryption techniques. It is a type of substitution cipher in which each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet. For example, with a left shift of 3, D would be replaced by A, E would become B, and so on. To use type into Input a phrase to encrypt/decrypt and in Key type shift distance.
+[Polybius Square]
+The Polybius cipher, also called Polybius square, is a substitution cipher using a square grid. Each character of the plain message is replaced by a couple of coordinates defining its position in the grid. To use type into Input a phrase to encrypt/decrypt and Key if needed. Without key all letters of english alphabet go in alphabetical order. With key letters of key take first positions in the grid, and after them all unused in key letters.
+[Morse Code]
+Morse code assigns to each letter, digit, or punctuation sign, a unique combination of signals made of short and long impulsions (usually represented with a dot . and a dash -). To use type into Input a phrase to encrypt/decrypt.
+[Vigenère cipher]
+The Vigenère cipher is a polyalphabetic substitution cipher that is a natural evolution of the Caesar cipher. The Caesar cipher encrypts by shifting each letter in the plaintext up or down a certain number using numbers, while Vigenère cipher uses letter of alphabet to decide shift. In this realization of algorithm Key must be same length as input. After Input and Key is same length every letter of Input will be shifted by position of letter in alphabet of letter with the same position in Key.
+[Scytale Cipher]
+A scytale is a stick, a piece of wood around which a ribbon (leather) is wrapped and on which a message is written, when the ribbon is unrolled an encrypted message appears (the order of the letters having changed). This algorithm emulates this process. Write message into Input and amount "spins" around stick into Key.
+[Book Cipher]
+The book cipher is a substitution cipher that uses a book as a reference table/index, each letter is encoded by the rank of a word in a text/book. Every letter in Input is encrypted using first letters of words in Key file.
