@@ -40,25 +40,25 @@ void ChangeScape(int ow, System::Windows::Forms::Form^ a)
 }
 */
 
-bool Checker(array<wchar_t>^ a, char switch_on)
+bool Checker(array<wchar_t>^ arr, char switch_on)
 {
-	if (a->Length <= 0)
+	if (arr->Length <= 0)
 		return 0;
 	switch (switch_on)
 	{
 	case 'L':
-		for (int i = 0; i < a->Length; i++)
-			if (!Char::IsLetter(a[i]) && !(a[i]==' '))
+		for (int i = 0; i < arr->Length; i++)
+			if (!Char::IsLetter(arr[i]) && !(arr[i]==' '))
 				return 0;
 		break;
 	case 'D':
-		for (int i = 0; i < a->Length; i++)
-			if (!(Char::IsDigit(a[i]) || a[i] == ' '))
+		for (int i = 0; i < arr->Length; i++)
+			if (!(Char::IsDigit(arr[i]) || arr[i] == ' '))
 				return 0;
 		break;
 	case 'M':
-		for (int i = 0; i < a->Length; i++)
-			if (!(a[i]=='.' || a[i]=='-' || a[i]=='/' || a[i] == ' '))
+		for (int i = 0; i < arr->Length; i++)
+			if (!(arr[i]=='.' || arr[i]=='-' || arr[i]=='/' || arr[i] == ' '))
 				return 0;
 		break;
 	default:
@@ -67,88 +67,100 @@ bool Checker(array<wchar_t>^ a, char switch_on)
 	return 1;
 }
 
-auto Encrypt(int inc, str ins, str ink)
+auto Encrypt(int InCipher, str InString, str InKey)
 {
-	ins = ins->ToUpper();
-	if (!Checker(ins->ToCharArray(), 'L'))
-		return Convert::ToString("ERROR");
-	switch (inc)
+	System::String^ out = Convert::ToString("ERROR");
+	InString = InString->ToUpper();
+	if (!Checker(InString->ToCharArray(), 'L'))
+		return out;
+	switch (InCipher)
 	{
 	case 0:
-		if (!System::String::IsNullOrEmpty(ink))
-			return Caesar(ins, Convert::ToInt32(ink));
+		if (!Checker(InKey->ToCharArray(), 'D'))
+			break;
+		if (!System::String::IsNullOrEmpty(InKey))
+			out = Caesar(InString, Convert::ToInt32(InKey));
 		else
-			return Caesar(ins, 1);
+			out = Caesar(InString, 1);
+		break;
 	case 1:
-		ins = ins->Replace((wchar_t)'J', (wchar_t)'I');
-		ink = ink->ToUpper();
-		return PolybiusEncrypt(ins, ink);
+		if (!Checker(InKey->ToCharArray(), 'L') && !System::String::IsNullOrEmpty(InKey))
+			break;
+		InString = InString->Replace((wchar_t)'J', (wchar_t)'I');
+		out = PolybiusEncrypt(InString, InKey);
+		break;
 	case 2:
-		return MorseEncrypt(ins);
+		out = MorseEncrypt(InString);
 		break;
 	case 3:
-		if (ink->Length != ins->Length)
+		if ((InKey->Length != InString->Length) || (!Checker(InKey->ToCharArray(), 'L')))
 			break;
-		ink = ink->ToUpper();
-		return VingenereEncrypt(ins, ink);
+		InKey = InKey->ToUpper();
+		out = VingenereEncrypt(InString, InKey);
 		break;
 	case 4:
-		if (System::String::IsNullOrEmpty(ink))
+		if ((System::String::IsNullOrEmpty(InKey)) || (!Checker(InKey->ToCharArray(), 'D')))
 			break;
-		while ((ins->Length % Convert::ToInt32(ink)) != 0)
-			ins += (wchar_t)' ';
-		return ScytaleEncrypt(ins, Convert::ToInt32(ink));
+		while ((InString->Length % Convert::ToInt32(InKey)) != 0)
+			InString += (wchar_t)' ';
+		out = ScytaleEncrypt(InString, Convert::ToInt32(InKey));
+		break;
 	case 5:
-		if (System::String::IsNullOrEmpty(ink))
+		if (System::String::IsNullOrEmpty(InKey))
 			break;
-		return BookEncrypt(ins, ink);
-	default:
+		out = BookEncrypt(InString, InKey);
 		break;
 	}
-	return Convert::ToString("ERROR");
+	return out;
 }
 
-auto Decrypt(int inc, str ins, str ink)
+auto Decrypt(int InCipher, str InString, str InKey)
 {
-	ins = ins->ToUpper();
-	switch (inc)
+	System::String^ out = Convert::ToString("ERROR");
+	InString = InString->ToUpper();
+	switch (InCipher)
 	{
 	case 0:
-		if (!Checker(ins->ToCharArray(), 'L'))
+		if (!Checker(InString->ToCharArray(), 'L'))
 			break;
-		if (!System::String::IsNullOrEmpty(ink))
-			return Caesar(ins, -Convert::ToInt32(ink));
-		return Caesar(ins, -1);
+		if (!System::String::IsNullOrEmpty(InKey))
+			out = Caesar(InString, -Convert::ToInt32(InKey));
+		else
+			out = Caesar(InString, -1);
+		break;
 	case 1:
-		if (!Checker(ins->ToCharArray(), 'D'))
+		if (!Checker(InString->ToCharArray(), 'D'))
 			break;
-		ink = ink->ToUpper();
-		return PolybiusDecrypt(ins, ink);
+		if (!Checker(InKey->ToCharArray(), 'L') && !System::String::IsNullOrEmpty(InKey))
+			break;
+		InKey = InKey->ToUpper();
+		out = PolybiusDecrypt(InString, InKey);
+		break;
 	case 2:
-		if (!Checker(ins->ToCharArray(), 'M'))
+		if (!Checker(InString->ToCharArray(), 'M'))
 			break;
-		return MorseDecrypt(ins);
+		out = MorseDecrypt(InString);
 		break;
 	case 3:
-		if (!Checker(ins->ToCharArray(), 'L'))
+		if (!Checker(InString->ToCharArray(), 'L'))
 			break;
-		if (ink->Length != ins->Length)
+		if ((InKey->Length != InString->Length) || (!Checker(InKey->ToCharArray(), 'L')))
 			break;
-		ink = ink->ToUpper();
-		return VingenereDecrypt(ins, ink);
+		InKey = InKey->ToUpper();
+		out = VingenereDecrypt(InString, InKey);
 		break;
 	case 4:
-		if (!Checker(ins->ToCharArray(), 'L'))
+		if (!Checker(InString->ToCharArray(), 'L'))
 			break;
-		if (System::String::IsNullOrEmpty(ink))
+		if ((System::String::IsNullOrEmpty(InKey)) || (!Checker(InKey->ToCharArray(), 'D')))
 			break;
-		while ((ins->Length % Convert::ToInt32(ink)) != 0)
-			ins += (wchar_t)' ';
-		return ScytaleDecrypt(ins, Convert::ToInt32(ink));
+		while ((InString->Length % Convert::ToInt32(InKey)) != 0)
+			InString += (wchar_t)' ';
+		return ScytaleDecrypt(InString, Convert::ToInt32(InKey));
 	case 5:
 
 	default:
 		break;
 	}
-	return Convert::ToString("ERROR");
+	return out;
 }

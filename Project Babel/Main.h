@@ -204,7 +204,7 @@ namespace PB {
 			this->input->Enabled = false;
 			this->input->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->input->Location = System::Drawing::Point(13, 182);
+			this->input->Location = System::Drawing::Point(12, 204);
 			this->input->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->input->Name = L"input";
 			this->input->Size = System::Drawing::Size(340, 30);
@@ -215,7 +215,7 @@ namespace PB {
 			this->key->Enabled = false;
 			this->key->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->key->Location = System::Drawing::Point(13, 249);
+			this->key->Location = System::Drawing::Point(12, 271);
 			this->key->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->key->Name = L"key";
 			this->key->Size = System::Drawing::Size(340, 30);
@@ -226,7 +226,7 @@ namespace PB {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(12, 154);
+			this->label1->Location = System::Drawing::Point(11, 176);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(55, 25);
 			this->label1->TabIndex = 5;
@@ -237,7 +237,7 @@ namespace PB {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(12, 222);
+			this->label2->Location = System::Drawing::Point(11, 244);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(47, 25);
 			this->label2->TabIndex = 6;
@@ -247,7 +247,7 @@ namespace PB {
 			// 
 			this->output->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->output->Location = System::Drawing::Point(397, 222);
+			this->output->Location = System::Drawing::Point(396, 244);
 			this->output->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->output->Name = L"output";
 			this->output->ReadOnly = true;
@@ -260,7 +260,7 @@ namespace PB {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(392, 193);
+			this->label3->Location = System::Drawing::Point(391, 215);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(71, 25);
 			this->label3->TabIndex = 8;
@@ -279,7 +279,7 @@ namespace PB {
 			// 
 			this->filebutton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->filebutton->Location = System::Drawing::Point(12, 249);
+			this->filebutton->Location = System::Drawing::Point(11, 271);
 			this->filebutton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->filebutton->Name = L"filebutton";
 			this->filebutton->Size = System::Drawing::Size(107, 39);
@@ -294,7 +294,7 @@ namespace PB {
 			// 
 			this->desc->Location = System::Drawing::Point(13, 53);
 			this->desc->Name = L"desc";
-			this->desc->Size = System::Drawing::Size(727, 101);
+			this->desc->Size = System::Drawing::Size(727, 123);
 			this->desc->TabIndex = 10;
 			this->desc->Text = L"HERE LIES DESCRIPTION";
 			// 
